@@ -114,6 +114,7 @@ def emClarity_project_setup(project_directory, edf_files):
         os.system(command)
 
     # Assemble commands for copying & setting up
+    basenames = []
     for idx, project in enumerate(imod_projects):
         commands = []
         tmp_model_file = os.path.join(project.directory, 'tmp.mod')
@@ -135,11 +136,17 @@ def emClarity_project_setup(project_directory, edf_files):
         commands.append(model2point)
         commands.append(rm_tmp_mod)
 
+        basenames.append(project.basename)
+
         print('Preparing files for project number "{}" with name "{}"...'.format(idx, project.basename))
         print('Running commands...')
-
         for command in commands:
             run(command)
+
+    # Write out a file with basenames for easier time calling emClarity later
+    basename_file = os.path.join(EMCLARITY_PROJECT_DIR, 'basenames.txt')
+    with open(basename_file, mode='wt', encoding='utf8') as file:
+        file.write('\n'.join(basenames))
 
 # Running
 edf_files = get_edf_files(IMOD_BASE_DIR)
