@@ -1,7 +1,7 @@
 # emClarity_setup.py
 Simple user-friendly script for setting up an emClarity project from a set of IMOD alignments
 
-USAGE: `emClarity_setup.py -i <IMOD_BASE_DIR> -o <EMCLARITY_PROJECT_DIR`
+USAGE: `emClarity_setup.py -i <IMOD_BASE_DIR> -o <EMCLARITY_PROJECT_DIR>`
   
 | Argument              |   Input               |    Explanation |
 |:----------------------|:----------------------|:-----------|
